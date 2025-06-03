@@ -22,7 +22,7 @@ proxies:
 
   - name: SG2
     type: vmess
-    server: graph.instagram.com
+    server: investor.fb.com
     port: 443
     uuid: 3f8a4568-7bb6-42b5-af5d-d92824d5499f
     alterId: 0
@@ -33,7 +33,7 @@ proxies:
     ws-opts:
       path: /vmess
       headers:
-        Host: allstorevpn.premm.shop
+        Host: investor.fb.com.allstorevpn.premm.shop
 
   - name: SGV1
     type: vless
