@@ -52,7 +52,7 @@ proxies:
 
   - name: "SG2"
     type: vmess
-    server: sg.example.com
+    server: graph.instagram.com
     port: 443
     uuid: 3f8a4568-7bb6-42b5-af5d-d92824d5499f
     alterId: 0
