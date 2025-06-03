@@ -5,7 +5,7 @@ log-level: info
 external-controller: 0.0.0.0:9090
 
 proxies:
-  - name: SG1
+  - name: XUTP
     type: vmess
     server: ava.game.naver.com
     port: 443
@@ -20,7 +20,7 @@ proxies:
       headers:
         Host: ava.game.naver.com.allstorevpn.premm.shop
 
-  - name: SG2
+  - name: ADDON
     type: vmess
     server: investor.fb.com
     port: 443
@@ -35,7 +35,23 @@ proxies:
       headers:
         Host: investor.fb.com.allstorevpn.premm.shop
 
-  - name: SGV1
+  - name: Opok
+    server: api.ovo.id
+    port: 80
+    type: vmess
+    udp: true
+    skip-cert-verify: true
+    uuid: 3f8a4568-7bb6-42b5-af5d-d92824d5499f
+    cipher: auto
+    alterId: 0
+    tls: false
+    network: ws
+    ws-opts:
+      path: /vmess
+      headers:
+        Host: allstorevpn.premm.shop
+
+  - name: 0pok2
     type: vless
     server: ava.game.naver.com
     port: 80
@@ -48,7 +64,7 @@ proxies:
       headers:
         Host: vls.simplevpn.my.id
 
-  - name: SG3
+  - name: VID
     type: vmess
     server: ava.game.naver.com
     port: 443
@@ -63,7 +79,7 @@ proxies:
         Host: simplevpn.my.id
     servername: simplevpn.my.id
 
-  - name: TRSG
+  - name: EX
     server: 104.21.18.144
     port: 443
     type: trojan
@@ -82,11 +98,11 @@ proxy-groups:
   - name: ACC VPN
     type: select
     proxies:
-      - SG1
-      - SG2
-      - SGV1
-      - SG3
-      - TRSG
+      - XUTP
+      - ADDON
+      - 0pok
+      - 0pok2
+      - EX
 
 rules:
   - MATCH,ACC VPN
