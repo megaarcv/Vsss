@@ -78,19 +78,6 @@ proxies:
       headers:
         Host: icecream.955850.xyz
 
-  - name: TRSG2
-    type: trojan
-    server: sg4.6n6.net
-    port: 443
-    password: "390f2740-4099-11f0-b1f2-1239d0255272"
-    sni: ava.game.naver.com
-    alpn:
-      - h2
-      - http/1.1
-    skip-cert-verify: true
-    network: tcp
-    udp: true
-
 proxy-groups:
   - name: ACC VPN
     type: select
@@ -100,7 +87,6 @@ proxy-groups:
       - SGV1
       - SG3
       - TRSG
-      - TRSG2
 
 rules:
   - MATCH,ACC VPN
