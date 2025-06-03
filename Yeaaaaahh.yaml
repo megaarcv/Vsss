@@ -63,7 +63,34 @@ proxies:
         Host: simplevpn.my.id
     servername: simplevpn.my.id
 
-  
+  - name: TRSG
+    server: 104.21.18.144
+    port: 443
+    type: trojan
+    udp: true
+    skip-cert-verify: true
+    password: 6884d714-d3c4-4b49-aa20-767ea92837d6
+    tls: true
+    sni: icecream.955850.xyz
+    network: ws
+    ws-opts:
+      path: /proxyip=45.67.215.153:443&proxyIP=null
+      headers:
+        Host: icecream.955850.xyz
+
+  - name: WG
+    type: wireguard
+    server: nl.vpnlabs.site
+    port: 51820
+    ip: 10.66.66.9
+    ipv6: fd42:42:42::9
+    private-key: uLeSuMjNbKjKUPqSKP7w9PkfE0Q0Ejbw7Z7qRIkAeGg=
+    public-key: Xsl2kPJEEyDgFZ6xqRDXpFUwQ63+Iao2FA4LhTCKtEk=
+    pre-shared-key: Vgps4wbQ4FsQ+pUDaIbJT5FGKh2+soBAPI8/XI37m7w=
+    udp: true
+    dns:
+      - 1.1.1.1
+      - 1.0.0.1
 
 proxy-groups:
   - name: ACC VPN
@@ -73,6 +100,8 @@ proxy-groups:
       - SG2
       - SGV1
       - SG3
+      - TRSG
+      - WG
 
 rules:
   - MATCH,ACC VPN
