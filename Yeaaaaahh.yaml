@@ -5,7 +5,7 @@ log-level: info
 external-controller: 0.0.0.0:9090
 
 proxies:
-  - name: "ID1"
+  - name: ID1
     type: vmess
     server: ava.game.naver.com
     port: 443
@@ -20,7 +20,7 @@ proxies:
       headers:
         Host: ava.game.naver.com.id1.ubaistore.my.id
 
-  - name: "ID2"
+  - name: ID2
     type: vmess
     server: graph.instagram.com
     port: 443
@@ -35,7 +35,7 @@ proxies:
       headers:
         Host: id1.ubaistore.my.id
 
-  - name: "SG1"
+  - name: SG1
     type: vmess
     server: ava.game.naver.com
     port: 443
@@ -50,7 +50,7 @@ proxies:
       headers:
         Host: ava.game.naver.com.allstorevpn.premm.shop
 
-  - name: "SG2"
+  - name: SG2
     type: vmess
     server: graph.instagram.com
     port: 443
@@ -69,20 +69,20 @@ proxy-groups:
   - name: BESTPING
     type: url-test
     proxies:
-      - "ID1"
-      - "ID2"
-      - "SG1"
-      - "SG2"
+      - ID1
+      - ID2
+      - SG1
+      - SG2
     url: http://www.gstatic.com/generate_204
     interval: 300
 
   - name: FALLBACK
     type: fallback
     proxies:
-      - "ID1"
-      - "ID2"
-      - "SG1"
-      - "SG2"
+      - ID1
+      - ID2
+      - SG1
+      - SG2
     url: http://www.gstatic.com/generate_204
     interval: 300
 
