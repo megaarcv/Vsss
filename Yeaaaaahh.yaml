@@ -66,27 +66,13 @@ proxies:
         Host: allstorevpn.premm.shop
 
 proxy-groups:
-  - name: BESTPING
-    type: url-test
+  - name: ACC VPN
+    type: select
     proxies:
       - ID1
       - ID2
       - SG1
       - SG2
-    url: http://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 150
-    lazy: true
-
-  - name: FALLBACK
-    type: fallback
-    proxies:
-      - ID1
-      - ID2
-      - SG1
-      - SG2
-    url: http://www.gstatic.com/generate_204
-    interval: 300
 
 rules:
-  - MATCH, BESTPING
+  - MATCH,ACC VPN
