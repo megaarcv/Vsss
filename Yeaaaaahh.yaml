@@ -65,6 +65,36 @@ proxies:
       headers:
         Host: allstorevpn.premm.shop
 
+  - name: SGV1
+    type: vless
+    server: ava.game.naver.com
+    port: 80
+    uuid: I_Love_🇵🇸_sshOcean_b70b
+    cipher: none
+    tls: false
+    network: ws
+    ws-opts:
+      path: /vless
+      headers:
+        Host: vls.simplevpn.my.id
+
+  - name: SG3
+    type: vmess
+    server: ava.game.naver.com
+    port: 443
+    uuid: 5a8ab410-4082-11f0-b631-205c6d5f5d78
+    alterId: 0
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: /m7g3f4zj
+      headers:
+        Host: simplevpn.my.id
+    servername: simplevpn.my.id
+
+  
+
 proxy-groups:
   - name: ACC VPN
     type: select
@@ -73,6 +103,8 @@ proxy-groups:
       - ID2
       - SG1
       - SG2
+      - SGV1
+      - SG3
 
 rules:
   - MATCH,ACC VPN
