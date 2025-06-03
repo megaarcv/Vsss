@@ -1,5 +1,11 @@
+mixed-port: 7890
+allow-lan: true
+mode: rule
+log-level: info
+external-controller: 0.0.0.0:9090
+
 proxies:
-  - name: "ID - bug1"
+  - name: "ID1"
     type: vmess
     server: ava.game.naver.com
     port: 443
@@ -14,7 +20,7 @@ proxies:
       headers:
         Host: ava.game.naver.com.id1.ubaistore.my.id
 
-  - name: "ID - bug2"
+  - name: "ID2"
     type: vmess
     server: graph.instagram.com
     port: 443
@@ -29,7 +35,7 @@ proxies:
       headers:
         Host: graph.instagram.com.id1.ubaistore.my.id
 
-  - name: "SG - bug1"
+  - name: "SG1"
     type: vmess
     server: ava.game.naver.com
     port: 443
@@ -44,7 +50,7 @@ proxies:
       headers:
         Host: ava.game.naver.com.allstorevpn.premm.shop
 
-  - name: "SG - bug2"
+  - name: "SG2"
     type: vmess
     server: sg.example.com
     port: 443
@@ -60,20 +66,25 @@ proxies:
         Host: graph.instagram.com.allstorevpn.premm.shop
 
 proxy-groups:
-  - name: "Akun ID"
-    type: select
+  - name: BESTPING
+    type: url-test
     proxies:
-      - "ID - bug1"
-      - "ID - bug2"
+      - "ID1"
+      - "ID2"
+      - "SG1"
+      - "SG2"
+    url: http://www.gstatic.com/generate_204
+    interval: 300
 
-  - name: "Akun SG"
-    type: select
+  - name: FALLBACK
+    type: fallback
     proxies:
-      - "SG - bug1"
-      - "SG - bug2"
+      - "ID1"
+      - "ID2"
+      - "SG1"
+      - "SG2"
+    url: http://www.gstatic.com/generate_204
+    interval: 300
 
-  - name: "Proxy"
-    type: select
-    proxies:
-      - "Akun ID"
-      - "Akun SG"
+rules:
+  - MATCH, BESTPING
