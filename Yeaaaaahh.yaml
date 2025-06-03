@@ -4,37 +4,7 @@ mode: rule
 log-level: info
 external-controller: 0.0.0.0:9090
 
-proxies:
-  - name: ID1
-    type: vmess
-    server: ava.game.naver.com
-    port: 443
-    uuid: f893266c-4cdd-456e-92b6-a9c35344d090
-    alterId: 0
-    cipher: auto
-    network: ws
-    tls: true
-    skip-cert-verify: false
-    ws-opts:
-      path: /vmessws
-      headers:
-        Host: ava.game.naver.com.id1.ubaistore.my.id
-
-  - name: ID2
-    type: vmess
-    server: graph.instagram.com
-    port: 443
-    uuid: f893266c-4cdd-456e-92b6-a9c35344d090
-    alterId: 0
-    cipher: auto
-    network: ws
-    tls: true
-    skip-cert-verify: false
-    ws-opts:
-      path: /vmessws
-      headers:
-        Host: id1.ubaistore.my.id
-
+Bestping:
   - name: SG1
     type: vmess
     server: ava.game.naver.com
@@ -96,11 +66,9 @@ proxies:
   
 
 proxy-groups:
-  - name: ACC VPN
+  - name: "ACC VPN"
     type: select
     proxies:
-      - ID1
-      - ID2
       - SG1
       - SG2
       - SGV1
