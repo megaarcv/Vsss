@@ -78,7 +78,6 @@ proxies:
       headers:
         Host: icecream.955850.xyz
 
-  proxies:
   - name: TRSG2
     type: trojan
     server: sg4.6n6.net
