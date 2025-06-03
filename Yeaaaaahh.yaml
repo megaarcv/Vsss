@@ -66,7 +66,7 @@ proxies:
   
 
 proxy-groups:
-  - name: "ACC VPN"
+  - name: ACC VPN
     type: select
     proxies:
       - SG1
