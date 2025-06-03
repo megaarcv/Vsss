@@ -33,7 +33,7 @@ proxies:
     ws-opts:
       path: /vmessws
       headers:
-        Host: graph.instagram.com.id1.ubaistore.my.id
+        Host: id1.ubaistore.my.id
 
   - name: "SG1"
     type: vmess
@@ -63,7 +63,7 @@ proxies:
     ws-opts:
       path: /vmess
       headers:
-        Host: graph.instagram.com.allstorevpn.premm.shop
+        Host: allstorevpn.premm.shop
 
 proxy-groups:
   - name: BESTPING
