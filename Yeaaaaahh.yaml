@@ -4,7 +4,7 @@ mode: rule
 log-level: info
 external-controller: 0.0.0.0:9090
 
-Bestping:
+proxies:
   - name: SG1
     type: vmess
     server: ava.game.naver.com
