@@ -4,6 +4,17 @@ mode: rule
 log-level: info
 external-controller: 0.0.0.0:9090
 
+dns:
+  enable: true
+  ipv6: false
+  listen: 0.0.0.0:53
+  default-nameserver:
+    - 1.1.1.1
+    - 8.8.8.8
+  nameserver:
+    - https://dns.google/dns-query
+    - https://cloudflare-dns.com/dns-query
+
 proxies:
   - name: XUTP
     type: vmess
@@ -100,7 +111,7 @@ proxy-groups:
     proxies:
       - XUTP
       - ADDON
-      - 0pok
+      - Opok
       - 0pok2
       - EX
 
