@@ -30,90 +30,28 @@ proxies:
       path: /vmess
       headers:
         Host: ava.game.naver.com.allstorevpn.premm.shop
-
-  - name: ADDON
-    type: vmess
-    server: investor.fb.com
+        
+  - name: Opok
+    type: vless
+    server: ovo.co.id
     port: 443
-    uuid: 3f8a4568-7bb6-42b5-af5d-d92824d5499f
-    alterId: 0
-    cipher: auto
+    uuid: 4d038edf-dbf2-45d8-a7cf-3ca1cdc037a5
     network: ws
     tls: true
-    skip-cert-verify: false
-    ws-opts:
-      path: /vmess
-      headers:
-        Host: investor.fb.com.allstorevpn.premm.shop
-
-  - name: Opok
-    server: api.ovo.id
-    port: 80
-    type: vmess
+    servername: vip.prozect.xyz
     udp: true
-    skip-cert-verify: true
-    uuid: 3f8a4568-7bb6-42b5-af5d-d92824d5499f
-    cipher: auto
-    alterId: 0
-    tls: false
-    network: ws
-    ws-opts:
-      path: /vmess
-      headers:
-        Host: allstorevpn.premm.shop
-
-  - name: 0pok2
-    type: vless
-    server: ava.game.naver.com
-    port: 80
-    uuid: I_Love_🇵🇸_sshOcean_b70b
-    cipher: none
-    tls: false
-    network: ws
+    client-fingerprint: chrome
     ws-opts:
       path: /vless
       headers:
-        Host: vls.simplevpn.my.id
-
-  - name: VID
-    type: vmess
-    server: ava.game.naver.com
-    port: 443
-    uuid: 5a8ab410-4082-11f0-b631-205c6d5f5d78
-    alterId: 0
-    cipher: auto
-    tls: true
-    network: ws
-    ws-opts:
-      path: /m7g3f4zj
-      headers:
-        Host: simplevpn.my.id
-    servername: simplevpn.my.id
-
-  - name: EX
-    server: 104.21.18.144
-    port: 443
-    type: trojan
-    udp: true
-    skip-cert-verify: true
-    password: 6884d714-d3c4-4b49-aa20-767ea92837d6
-    tls: true
-    sni: icecream.955850.xyz
-    network: ws
-    ws-opts:
-      path: /proxyip=45.67.215.153:443&proxyIP=null
-      headers:
-        Host: icecream.955850.xyz
+        Host: vip.prozect.xyz
 
 proxy-groups:
   - name: ACC VPN
     type: select
     proxies:
       - XUTP
-      - ADDON
       - Opok
-      - 0pok2
-      - EX
 
 rules:
   - MATCH,ACC VPN
