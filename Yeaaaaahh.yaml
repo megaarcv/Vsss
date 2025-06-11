@@ -1,57 +1,84 @@
-mixed-port: 7890
-allow-lan: true
-mode: rule
-log-level: info
-external-controller: 0.0.0.0:9090
-
-dns:
-  enable: true
-  ipv6: false
-  listen: 0.0.0.0:53
-  default-nameserver:
-    - 1.1.1.1
-    - 8.8.8.8
-  nameserver:
-    - https://dns.google/dns-query
-    - https://cloudflare-dns.com/dns-query
-
 proxies:
-  - name: XUTP
+  # === VLESS Nodes ===
+  - name: VLESS - ava.game.naver.com
+    type: vless
+    server: ava.game.naver.com
+    port: 443
+    uuid: 4d038edf-dbf2-45d8-a7cf-3ca1cdc037a5
+    tls: true
+    servername: ava.game.naver.com.vip.prozect.xyz
+    network: ws
+    ws-opts:
+      path: /vless
+      headers:
+        Host: ava.game.naver.com.vip.prozect.xyz
+
+  - name: VLESS - login.df.game.naver.com
+    type: vless
+    server: login.df.game.naver.com
+    port: 443
+    uuid: 4d038edf-dbf2-45d8-a7cf-3ca1cdc037a5
+    tls: true
+    servername: ava.game.naver.com.vip.prozect.xyz
+    network: ws
+    ws-opts:
+      path: /vless
+      headers:
+        Host: ava.game.naver.com.vip.prozect.xyz
+
+  # === VMess Nodes ===
+  - name: VMess - ava.game.naver.com
     type: vmess
     server: ava.game.naver.com
     port: 443
     uuid: 3f8a4568-7bb6-42b5-af5d-d92824d5499f
     alterId: 0
     cipher: auto
-    network: ws
     tls: true
-    skip-cert-verify: false
+    servername: ava.game.naver.com.allstorevpn.premm.shop
+    network: ws
     ws-opts:
       path: /vmess
       headers:
         Host: ava.game.naver.com.allstorevpn.premm.shop
-        
-  - name: Opok
-    type: vless
-    server: ovo.co.id
+
+  - name: VMess - login.df.game.naver.com
+    type: vmess
+    server: login.df.game.naver.com
     port: 443
-    uuid: 4d038edf-dbf2-45d8-a7cf-3ca1cdc037a5
-    network: ws
+    uuid: 3f8a4568-7bb6-42b5-af5d-d92824d5499f
+    alterId: 0
+    cipher: auto
     tls: true
-    servername: vip.prozect.xyz
-    udp: true
-    client-fingerprint: chrome
+    servername: ava.game.naver.com.allstorevpn.premm.shop
+    network: ws
     ws-opts:
-      path: /vless
+      path: /vmess
       headers:
-        Host: vip.prozect.xyz
+        Host: ava.game.naver.com.allstorevpn.premm.shop
 
 proxy-groups:
-  - name: ACC VPN
+  - name: VMess-Auto
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    proxies:
+      - VMess - ava.game.naver.com
+      - VMess - login.df.game.naver.com
+
+  - name: VLESS-Auto
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    proxies:
+      - VLESS - ava.game.naver.com
+      - VLESS - login.df.game.naver.com
+
+  - name: Line
     type: select
     proxies:
-      - XUTP
-      - Opok
+      - VLESS-Auto
+      - VMess-Auto
 
 rules:
-  - MATCH,ACC VPN
+  - MATCH,Line
