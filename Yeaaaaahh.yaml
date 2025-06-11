@@ -1,6 +1,6 @@
 proxies:
-  # === VLESS Nodes ===
-  - name: VLESS - ava.game.naver.com
+  # ==== VLESS GROUP ====
+  - name: "VLESS | LINE"
     type: vless
     server: ava.game.naver.com
     port: 443
@@ -13,21 +13,34 @@ proxies:
       headers:
         Host: ava.game.naver.com.vip.prozect.xyz
 
-  - name: VLESS - login.df.game.naver.com
+  - name: "VLESS | TIKTOK"
     type: vless
-    server: login.df.game.naver.com
+    server: 172.67.144.227
     port: 443
     uuid: 4d038edf-dbf2-45d8-a7cf-3ca1cdc037a5
     tls: true
-    servername: ava.game.naver.com.vip.prozect.xyz
+    servername: vip.prozect.xyz
     network: ws
     ws-opts:
       path: /vless
       headers:
-        Host: ava.game.naver.com.vip.prozect.xyz
+        Host: vip.prozect.xyz
 
-  # === VMess Nodes ===
-  - name: VMess - ava.game.naver.com
+  - name: "VLESS | FB"
+    type: vless
+    server: investor.fb.com
+    port: 443
+    uuid: 4d038edf-dbf2-45d8-a7cf-3ca1cdc037a5
+    tls: true
+    servername: vip.prozect.xyz
+    network: ws
+    ws-opts:
+      path: /vless
+      headers:
+        Host: vip.prozect.xyz
+
+  # ==== VMESS GROUP ====
+  - name: "VMESS | LINE"
     type: vmess
     server: ava.game.naver.com
     port: 443
@@ -35,50 +48,63 @@ proxies:
     alterId: 0
     cipher: auto
     tls: true
-    servername: ava.game.naver.com.allstorevpn.premm.shop
     network: ws
+    servername: ava.game.naver.com.allstorevpn.premm.shop
     ws-opts:
       path: /vmess
       headers:
         Host: ava.game.naver.com.allstorevpn.premm.shop
 
-  - name: VMess - login.df.game.naver.com
+  - name: "VMESS | IG"
     type: vmess
-    server: login.df.game.naver.com
+    server: graph.instagram.com
     port: 443
     uuid: 3f8a4568-7bb6-42b5-af5d-d92824d5499f
     alterId: 0
     cipher: auto
     tls: true
-    servername: ava.game.naver.com.allstorevpn.premm.shop
     network: ws
+    servername: allstorevpn.premm.shop
     ws-opts:
       path: /vmess
       headers:
-        Host: ava.game.naver.com.allstorevpn.premm.shop
+        Host: allstorevpn.premm.shop
+
+  - name: "VMESS | FB"
+    type: vmess
+    server: investor.fb.com
+    port: 443
+    uuid: 3f8a4568-7bb6-42b5-af5d-d92824d5499f
+    alterId: 0
+    cipher: auto
+    tls: true
+    network: ws
+    servername: allstorevpn.premm.shop
+    ws-opts:
+      path: /vmess
+      headers:
+        Host: allstorevpn.premm.shop
 
 proxy-groups:
-  - name: VMess-Auto
-    type: url-test
-    url: http://www.gstatic.com/generate_204
-    interval: 300
-    proxies:
-      - VMess - ava.game.naver.com
-      - VMess - login.df.game.naver.com
-
-  - name: VLESS-Auto
-    type: url-test
-    url: http://www.gstatic.com/generate_204
-    interval: 300
-    proxies:
-      - VLESS - ava.game.naver.com
-      - VLESS - login.df.game.naver.com
-
-  - name: Line
+  - name: "🌐 VLESS"
     type: select
     proxies:
-      - VLESS-Auto
-      - VMess-Auto
+      - "VLESS | LINE"
+      - "VLESS | TIKTOK"
+      - "VLESS | FB"
+
+  - name: "🌐 VMESS"
+    type: select
+    proxies:
+      - "VMESS | LINE"
+      - "VMESS | IG"
+      - "VMESS | FB"
+
+  - name: "🚀 Select"
+    type: select
+    proxies:
+      - "🌐 VLESS"
+      - "🌐 VMESS"
 
 rules:
-  - MATCH,Line
+  - MATCH,🚀 Select
